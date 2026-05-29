@@ -1,0 +1,19 @@
+# Handle text files automatically and force LF line endings
+* text=auto eol=lf
+
+# Force specific code files to remain LF
+*.js text eol=lf
+*.jsx text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+
+# Keep binary files untouched
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.svg binary
+*.ico binary
