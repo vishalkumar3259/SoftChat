@@ -19,11 +19,10 @@ const chatSchema = new Schema<IChat>({
         },
     ], 
     lastMessage: {
-        types: Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: "Message",
-        defalut: null,
-    },
-    lastMessageAt:{
+        default: null,
+    },    lastMessageAt:{
         types: Date,
         defalut: Date.now,
     },

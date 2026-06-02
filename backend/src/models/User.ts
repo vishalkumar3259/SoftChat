@@ -28,6 +28,12 @@ const UserSchema = new Schema<IUser>({
         lowercase: true, // 
         trim: true,
     }
+    ,
+    avatar: {
+        type: String,
+        required: false,
+        trim: true,
+    }
     },
     {
         timestamps : true,

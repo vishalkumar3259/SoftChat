@@ -3,13 +3,14 @@
   "module": "index.ts",
   "type": "module",
   "private": true,
-  "scripts":{
+  "scripts": {
     "dev": "bun --watch index.ts",
     "start": "bun index.ts",
     "build": "bun install"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "@types/cors": "^2.8.19"
   },
   "peerDependencies": {
     "typescript": "^5"
