@@ -7,11 +7,15 @@ const sanitizeErrorMessage = (message: string) => {
 };
 
 export const errorHandler = (err: Error, _req: Request, res: Response, _next: NextFunction) => {
-  console.log("Error:", err.message);
+//   console.log("Error:", err.message);
 
   const statusCode = res.statusCode !== 200 ? res.statusCode : 500;
   const isProduction = process.env.NODE_ENV === "production";
   const safeMessage = isProduction ? sanitizeErrorMessage(err.message || "Internal Server Error") : err.message || "Internal Server Error";
+
+   if (!isProduction) {
+    console.log("Error:", err.message);
+   }
 
   console.error({
     error: err.name,
