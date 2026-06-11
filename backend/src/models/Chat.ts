@@ -23,8 +23,8 @@ const chatSchema = new Schema<IChat>({
         ref: "Message",
         default: null,
     },    lastMessageAt:{
-        types: Date,
-        defalut: Date.now,
+        type: Date,
+        default: Date.now,
     },
 }, {timestamps:true});
 
