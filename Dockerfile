@@ -6,7 +6,7 @@ WORKDIR /app
 # build web frontend
 WORKDIR /app/web
 COPY web/package.json web/bun.lock* ./
-RUN bun install --frozen-lockfile
+RUN bun install 
 COPY web/ ./
 
 ARG VITE_CLERK_PUBLISHABLE_KEY
