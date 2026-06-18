@@ -1,13 +1,14 @@
-import express from "express"
-import cors from "cors"
+import express from "express";
+import cors from "cors";
+import path from "path";
 
-import { clerkMiddleware } from '@clerk/express'
+import { clerkMiddleware } from '@clerk/express';
 
-import authRoutes from "./routes/authRoutes"
-import chatRoutes from "./routes/chatRoutes"
-import messageRoutes from "./routes/messageRoutes"
-import userRoutes from "./routes/userRoutes"
-import { errorHandler } from "./middleware/errorHandler"
+import authRoutes from "./routes/authRoutes";
+import chatRoutes from "./routes/chatRoutes";
+import messageRoutes from "./routes/messageRoutes";
+import userRoutes from "./routes/userRoutes";
+import { errorHandler } from "./middleware/errorHandler";
 
 const app = express()
 
@@ -26,6 +27,15 @@ app.use("/api/messages", messageRoutes);
 app.use("/api/users", userRoutes);
 
 //error handeler must come after the all the routes ans other middleware so they can catch error passed with next(err) or throw inside async hadlers.
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../../web/dist")));
+
+  app.get("/{*any}", (_, res) => {
+    res.sendFile(path.join(__dirname, "../../web/dist/index.html"));
+  });
+}
+
 
 app.use(errorHandler);
 
